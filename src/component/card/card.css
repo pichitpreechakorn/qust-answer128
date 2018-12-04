@@ -1,0 +1,23 @@
+#text {
+    color: black;
+    font-family: 'Kanit';
+    font-family: 25px;
+}
+#text-sub {
+    color: black;
+    font-family: 'Kanit';
+    font-size: 18px;
+    text-align: left;
+}
+.card-form {
+    width: 750px;
+}
+.form-body {
+}
+#btn-submit {
+    font-family: 'Kanit';
+}
+#detail-text {
+    font-family: 'kanit';
+    font-size: 16px;
+}

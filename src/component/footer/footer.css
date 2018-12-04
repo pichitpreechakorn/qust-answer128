@@ -1,0 +1,26 @@
+.text-copyrigth {
+    padding-top: 10px;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    font-family: 'Kanit';
+}
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+.guurun-logo {
+    margin: 5px;
+    height: 20px;
+}
+  
+.i-bitz-logo {
+    margin: 5px;
+    height: 30px;
+}
+.footer-bg{
+    background-color: #fff;
+
+}
