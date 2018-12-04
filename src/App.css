@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: 'Kanit'
+  font-family: 'Kanit';
 }
 
 .App-logo {
@@ -32,13 +32,16 @@
   }
 }
 .btn-start {
+  margin-top: 10px;
   display: flex;
   flex: 1;
+  flex-direction: row;
   justify-content: space-evenly;
   align-content: center;
 }
 #head-title {
-  color: #282c34
+  font-family: 'Kanit';
+  color: #282c34;
 }
 .img-bg {
   position: absolute;
@@ -54,4 +57,8 @@
 }
 #headTitle { 
   margin-top: 20px;
+}
+#btn-sort {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

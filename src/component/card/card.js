@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Card, CardText, CardBody, CardImg,
-  CardTitle, CardSubtitle, Button, Form, FormGroup, Label, Input, Col, Row, Container
+  CardTitle, CardSubtitle, Button, Form, FormGroup, Label, Input, Col, Row, Alert
 } from 'reactstrap';
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
@@ -25,7 +25,8 @@ class CardForm extends Component {
   }
   randomNumber() {
     const min = 0;
-    const max = 127;
+    // const max = 127;
+    const max = 11;
     const rand = min + Math.random() * (max - min);
     this.setState({ number: parseInt(this.state.number + rand) });
     setTimeout(() => {
@@ -42,7 +43,7 @@ class CardForm extends Component {
     this.checkAnswer()
   }
   checkAnswer() {
-    if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[0].answer)) {
+    if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer)) {
       this.setState({ statusModalSuccess: true })
       console.log("ถูก")
     }
@@ -64,65 +65,67 @@ class CardForm extends Component {
   render() {
     return (
       <div class="card-form">
-          <Row>
-            <Col xs={6} md={6} sm={6}>
-              <Card>
+        <Row>
+          <Col xs={12} md={12} sm={12}>
+            <Card>
+              <CardBody>
+                <CardTitle id="text">
+                  {/* <Label> ข้อที่ {dataQust[0].no} </Label> */}
+                  <Label> ข้อที่ {dataQust[this.state.number].no} </Label>
+
+                </CardTitle>
                 <CardBody>
-                  <CardTitle id="text">
-                    {/* <Label> ข้อที่ {dataQust[0].no} </Label> */}
-                    <Label> ข้อที่ {dataQust[this.state.number].no} </Label>
-
-                  </CardTitle>
-                  <CardBody>
-                    <div className="form-body">
-                      <Row>
-                        <Col sm={2} xs={6}>
-                          <p id="text-sub"> <u>ถาม :</u> </p>
+                  <div className="form-body">
+                    <Row>
+                      <Col sm={2} xs={2}>
+                        <p id="text-sub"> <u>ถาม :</u> </p>
+                      </Col>
+                      <Col sm={10} xs={10}>
+                        <p id="text-sub"> {dataQust[this.state.number].qust} </p>
+                      </Col>
+                    </Row>
+                    <Form onSubmit={this.handleSubmit}>
+                      <FormGroup row>
+                        <Col sm={2} xs={2}>
+                          <p id="text-sub"> <u>ตอบ :</u> </p>
                         </Col>
-                        <Col sm={10} xs={6}>
-                          <p id="text-sub"> {dataQust[0].qust} </p>
+                        <Col sm={10} xs={10}>
+                          <Input
+                            type="textarea"
+                            name="text"
+                            id="exampleText"
+                            innerRef={(input) => this.getAnswer = input}
+                          />
                         </Col>
-                      </Row>
-                      <Form onSubmit={this.handleSubmit}>
-                        <FormGroup row>
-                          <Col sm={2} xs={6}>
-                            <p id="text-sub"> <u>ตอบ :</u> </p>
-                          </Col>
-                          <Col sm={10} xs={6}>
-                            <Input
-                              type="textarea"
-                              name="text"
-                              id="exampleText"
-                              innerRef={(input) => this.getAnswer = input}
-                            />
-                          </Col>
-                        </FormGroup>
-                        <Button color="success" block outline onClick={this.toggle.bind(this)} type="submit">
-                          <Label id="btn-submit"> ยืนยันคำตอบ </Label>
-                        </Button>
-                      </Form>
-                    </div>
-                  </CardBody>
-
+                      </FormGroup>
+                      <Button color="success" block outline onClick={this.toggle.bind(this)} type="submit">
+                        <Label id="btn-submit"> ยืนยันคำตอบ </Label>
+                      </Button>
+                    </Form>
+                  </div>
                 </CardBody>
-              </Card>
-              {
-                this.state.statusModalSuccess &&
-                <ModalSuccess
-                  closemodal={this.closeModal.bind(this)}
-                  addNumber={this.addNumber.bind(this)}
-                  answer={dataQust[this.state.number].answer}
-                />
-              }
-              {
-                this.state.statusModalFail &&
-                <ModalFaild
-                  closemodal={this.closeModal.bind(this)}
-                  answer={dataQust[0].answer}
-                />
-              }
-            </Col>
-          </Row>
+                <Alert color="warning">
+                            <p id="detail-text">หมายเหตุ : กรุณากรอกคำตอบให้ถูกต้องมากที่สุดและใช้ตัวเลขเป็นตัวเลขไทยทั้งหมด เช่น 1 = ๑ เป็นต้น</p>
+                        </Alert>
+              </CardBody>
+            </Card>
+            {
+              this.state.statusModalSuccess &&
+              <ModalSuccess
+                closemodal={this.closeModal.bind(this)}
+                addNumber={this.addNumber.bind(this)}
+                answer={dataQust[this.state.number].answer}
+              />
+            }
+            {
+              this.state.statusModalFail &&
+              <ModalFaild
+                closemodal={this.closeModal.bind(this)}
+                answer={dataQust[this.state.number].answer}
+              />
+            }
+          </Col>
+        </Row>
       </div>
     );
   }

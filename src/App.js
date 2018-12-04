@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { Container, Row, Col } from 'reactstrap'
 import './App.css';
 import BackgroundImage from 'react-background-image-loader';
 import Home from './component/home/home'
@@ -13,22 +14,25 @@ class App extends Component {
       random: 0
     };
   }
-  
+
   render() {
     return (
-      <div>
-        <Nav />
-        <div className="bg-header">
-          <BackgroundImage src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg">
-            <Home
-              number={this.state.random}
-            />
-          </BackgroundImage>
-        </div>
-        <div className="footer">
-        <Footer/>
-        </div>
-      </div>
+        <Row>
+          <Col xs="12" sm="12" md="12">
+              <Nav />
+              <div className="bg-header">
+                <BackgroundImage src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg">
+                  <Home
+                    number={this.state.random}
+                  />
+                </BackgroundImage>
+              </div>
+              <div className="footer">
+                <Footer />
+              </div>
+          </Col>
+        </Row>
+
 
       // <div className="App">
       //   <header className="App-header">

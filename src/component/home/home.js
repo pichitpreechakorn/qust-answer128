@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Card, Jumbotron } from 'reactstrap';
+import { Card, Jumbotron, Row, Col } from 'reactstrap';
+import { Button } from 'semantic-ui-react'
 import logo from '../../logo.svg';
 import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
@@ -26,9 +27,20 @@ class App extends Component {
               <Jumbotron>
                 <h1 id="head-title">การสอนอมรม 128 ข้อ</h1>
                 <hr />
+                <label id="head-title">เลือกรูปแบบคำถาม</label>
                 <div className="btn-start">
-                  <Button outline color="success" onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}> แบบเรียงลำดับ </Button>
-                  <Button outline color="primary" onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}> แบบสุ่ม </Button>
+                  <Row>
+                    <Col xs={12} sm={12} md={12} id="btn-sort">
+                      <Button basic inverted color='green' onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}>
+                        <span className="App">แบบเรียงลำดับ</span>
+                      </Button>
+                      {/* <Button outline block size="lg" color="success" onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}> แบบเรียงลำดับ </Button> */}
+                    </Col>
+                    <Col xs={12} sm={12} md={12} id="btn-random">
+                      <Button outline block size="lg" color="primary" onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}> แบบสุ่ม </Button>
+                    </Col>
+                  </Row>
+
                 </div>
               </Jumbotron>
             }
@@ -36,14 +48,23 @@ class App extends Component {
 
           <div className="card-form">
             {this.state.choice1 &&
-              <CardComponentSort
-                number={0}
-              />
+              <Row>
+                <Col xs={10} sm={10} md={10}>
+                  <CardComponentSort
+                    number={0}
+                  />
+                </Col>
+              </Row>
+
             }
             {this.state.choice2 &&
-              <CardComponent
-                number={this.props.number}
-              />
+              <Row>
+                <Col xs={10} sm={12} md={12}>
+                  <CardComponent
+                    number={this.props.number}
+                  />
+                </Col>
+              </Row>
             }
           </div>
 
