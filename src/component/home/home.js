@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Jumbotron, Row, Col } from 'reactstrap';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import logo from '../../logo.svg';
 import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
@@ -31,13 +31,42 @@ class App extends Component {
                 <div className="btn-start">
                   <Row>
                     <Col xs={12} sm={12} md={12} id="btn-sort">
-                      <Button basic inverted color='green' onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}>
-                        <span className="App">แบบเรียงลำดับ</span>
+                      <Button
+                        animated
+                        fluid
+                        icon labelPosition='left'
+                        inverted color='green'
+                        size='large'
+                        onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}>
+                        <Button.Content visible>
+                          <Icon name='align justify' />
+                          <span className="App">    แบบเรียงลำดับ</span>
+                        </Button.Content>
+                        <Button.Content hidden>
+                          <Icon name='align justify' />
+                        </Button.Content>
                       </Button>
                       {/* <Button outline block size="lg" color="success" onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}> แบบเรียงลำดับ </Button> */}
                     </Col>
                     <Col xs={12} sm={12} md={12} id="btn-random">
-                      <Button outline block size="lg" color="primary" onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}> แบบสุ่ม </Button>
+                      <Button
+                        animated
+                        fluid
+                        
+                        inverted color='blue'
+                        size='large'
+                        onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}>
+                        <Button.Content 
+                          visible
+                          icon labelPosition='left'
+                          >
+                          <Icon name='random' />
+                          <span className="App">    แบบสุ่ม</span>
+                        </Button.Content>
+                        <Button.Content hidden>
+                          <Icon name='random' />
+                        </Button.Content>
+                      </Button>
                     </Col>
                   </Row>
 

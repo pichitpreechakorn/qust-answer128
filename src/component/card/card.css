@@ -9,15 +9,28 @@
     font-size: 18px;
     text-align: left;
 }
+#text-no {
+    margin-top: 20px;
+    color: black;
+    font-family: 'Kanit';
+    font-size: 22px;
+    text-align: center;
+}
 .card-form {
     width: 750px;
 }
-.form-body {
-}
+
 #btn-submit {
     font-family: 'Kanit';
 }
 #detail-text {
     font-family: 'kanit';
     font-size: 16px;
+    text-align: left;
+}
+#contai-quest {
+    margin-bottom: 20px;
+}
+.contai-textarea {
+    margin-bottom: 20px;
 }

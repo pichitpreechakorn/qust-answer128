@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
   Card, CardText, CardBody, CardImg,
-  CardTitle, CardSubtitle, Button, Form, FormGroup, Label, Input, Col, Row, Alert
+  CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
 } from 'reactstrap';
+import { Button, Icon } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
 import dataQust from '../../data/dataQuest'
@@ -14,6 +15,7 @@ class CardForm extends Component {
     this.state = {
       statusModalSuccess: false,
       statusModalFail: false,
+      status_textarea: 1,
       number: 0
     };
   }
@@ -43,12 +45,20 @@ class CardForm extends Component {
     this.checkAnswer()
   }
   checkAnswer() {
-    if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer)) {
-      this.setState({ statusModalSuccess: true })
+    if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
+      this.setState({ statusModalSuccess: !this.state.statusModalSuccess })
+      this.getAnswer.value = ""
+      this.addNumber()
       console.log("ถูก")
     }
+    else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
+      this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
+      this.getAnswer.value = ""
+      console.log("ผิด")
+    }
     else if (this.getAnswer.value === "") {
-      this.setState({ statusModalFail: true })
+      this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
+      this.getAnswer.value = ""
       console.log("ผิด")
     }
   }
@@ -71,42 +81,90 @@ class CardForm extends Component {
               <CardBody>
                 <CardTitle id="text">
                   {/* <Label> ข้อที่ {dataQust[0].no} </Label> */}
-                  <Label> ข้อที่ {dataQust[this.state.number].no} </Label>
+                  <Label id="text-no"> ข้อที่ {dataQust[this.state.number].no} </Label>
 
                 </CardTitle>
                 <CardBody>
                   <div className="form-body">
-                    <Row>
-                      <Col sm={2} xs={2}>
-                        <p id="text-sub"> <u>ถาม :</u> </p>
-                      </Col>
-                      <Col sm={10} xs={10}>
-                        <p id="text-sub"> {dataQust[this.state.number].qust} </p>
-                      </Col>
-                    </Row>
-                    <Form onSubmit={this.handleSubmit}>
-                      <FormGroup row>
+                    <div id="contai-quest">
+                      <Row>
                         <Col sm={2} xs={2}>
-                          <p id="text-sub"> <u>ตอบ :</u> </p>
+                          <p id="text-sub"> <u>ถาม :</u> </p>
                         </Col>
                         <Col sm={10} xs={10}>
-                          <Input
-                            type="textarea"
-                            name="text"
-                            id="exampleText"
-                            innerRef={(input) => this.getAnswer = input}
-                          />
+                          <p id="text-sub"> {dataQust[this.state.number].qust} </p>
                         </Col>
-                      </FormGroup>
-                      <Button color="success" block outline onClick={this.toggle.bind(this)} type="submit">
-                        <Label id="btn-submit"> ยืนยันคำตอบ </Label>
-                      </Button>
-                    </Form>
+                      </Row>
+                    </div>
+                    <div>
+                      <Form onSubmit={this.handleSubmit}>
+                        <FormGroup row>
+                          <Col sm={2} xs={2}>
+                            <p id="text-sub"> <u>ตอบ :</u> </p>
+                          </Col>
+                          <Col sm={10} xs={10}>
+                            {this.state.status_textarea === 0 ?
+                              <div className="contai-textarea">
+                                <Input
+                                  invalid
+                                  rows="7"
+                                  type="textarea"
+                                  name="text"
+                                  id="exampleText"
+                                  innerRef={(input) => this.getAnswer = input}
+                                  placeholder="คำตอบ ............................... "
+                                />
+                                <FormFeedback>คำตอบไม่ถูกต้อง !</FormFeedback>
+                              </div>
+                              :
+                              <div className="contai-textarea">
+                                <Input
+                                  type="textarea"
+                                  rows="7"
+                                  name="text"
+                                  id="exampleText"
+                                  innerRef={(input) => this.getAnswer = input}
+                                  placeholder="คำตอบ ............................... "
+                                />
+                              </div>
+
+                            }
+                          </Col>
+                        </FormGroup>
+                        <Button
+                          animated
+                          fluid
+                          inverted color='green'
+                          size='large'
+                          onClick={this.toggle.bind(this)}
+                          type="submit"
+                        >
+                          <Button.Content visible>
+                            <label id="btn-submit"> ยืนยันคำตอบ </label>
+                          </Button.Content>
+                          <Button.Content hidden>
+                            <Icon name='arrow right' />
+                            <label id="btn-submit">  ส่งคำตอบ </label>
+                          </Button.Content>
+                        </Button>
+                      </Form>
+                    </div>
                   </div>
                 </CardBody>
                 <Alert color="warning">
-                            <p id="detail-text">หมายเหตุ : กรุณากรอกคำตอบให้ถูกต้องมากที่สุดและใช้ตัวเลขเป็นตัวเลขไทยทั้งหมด เช่น 1 = ๑ เป็นต้น</p>
-                        </Alert>
+                  <Row>
+                    <Col sm={2} md={2} xs={2}>
+                      <p id="detail-text">หมายเหตุ : </p>
+                    </Col>
+                    <Col sm={10} md={10} xs={10}>
+                      <ul>
+                        <li id="detail-text">กรุณากรอกคำตอบให้ถูกต้องมากที่สุด</li>
+                        <li id="detail-text">ใช้ตัวเลขไทยเท่านั้น เช่น 1 = ๑ เป็นต้น</li>
+                        <li id="detail-text">เว้นวรรคหรือเว้นบรรทัดให้ถูกต้อง</li>
+                      </ul>
+                    </Col>
+                  </Row>
+                </Alert>
               </CardBody>
             </Card>
             {
@@ -117,13 +175,13 @@ class CardForm extends Component {
                 answer={dataQust[this.state.number].answer}
               />
             }
-            {
+            {/* {
               this.state.statusModalFail &&
               <ModalFaild
                 closemodal={this.closeModal.bind(this)}
                 answer={dataQust[this.state.number].answer}
               />
-            }
+            } */}
           </Col>
         </Row>
       </div>
