@@ -28,7 +28,7 @@ class CardForm extends Component {
   randomNumber() {
     const min = 0;
     // const max = 127;
-    const max = 11;
+    const max = 49;
     const rand = min + Math.random() * (max - min);
     this.setState({ number: parseInt(this.state.number + rand) });
     setTimeout(() => {
@@ -46,9 +46,9 @@ class CardForm extends Component {
   }
   checkAnswer() {
     if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
-      this.setState({ statusModalSuccess: !this.state.statusModalSuccess })
+      this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
       this.getAnswer.value = ""
-      this.addNumber()
+      // this.addNumber()
       console.log("ถูก")
     }
     else if (this.getAnswer.value !== dataQust[this.state.number].answer) {

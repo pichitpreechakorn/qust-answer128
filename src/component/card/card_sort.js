@@ -30,7 +30,7 @@ class CardForm extends Component {
     }
     checkAnswer() {
         if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
-            this.setState({ statusModalSuccess: !this.state.statusModalSuccess })
+            this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
             // this.addNumber()
             this.getAnswer.value = ""
             console.log("ถูก")
