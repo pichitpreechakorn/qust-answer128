@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "a1a88f6792c04c1d05cc",
+    "revision": "c75d1c94677a3ed4d923",
     "url": "/qust-answer128/static/css/main.ec13f59d.chunk.css"
   },
   {
-    "revision": "a1a88f6792c04c1d05cc",
-    "url": "/qust-answer128/static/js/main.a1a88f67.chunk.js"
+    "revision": "c75d1c94677a3ed4d923",
+    "url": "/qust-answer128/static/js/main.c75d1c94.chunk.js"
   },
   {
     "revision": "d53b09b6020ece59a77f",
@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/logo.5d5d9eef.svg"
   },
   {
-    "revision": "cd6c777f1945164224dee082abaea03a",
-    "url": "/qust-answer128/static/media/outline-icons.cd6c777f.woff2"
-  },
-  {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/qust-answer128/static/media/outline-icons.ef60a4f6.woff"
+  },
+  {
+    "revision": "cd6c777f1945164224dee082abaea03a",
+    "url": "/qust-answer128/static/media/outline-icons.cd6c777f.woff2"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
@@ -64,6 +64,10 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/icons.8e3c7f55.eot"
   },
   {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/qust-answer128/static/media/brand-icons.c5ebe0b3.ttf"
+  },
+  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/qust-answer128/static/media/icons.b87b9ba5.ttf"
   },
@@ -76,10 +80,6 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/outline-icons.82f60bd0.svg"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/qust-answer128/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "962a1bf31c081691065fe333d9fa8105",
     "url": "/qust-answer128/static/media/icons.962a1bf3.svg"
   },
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "4b7d7b0fcd7950a7e52f5c99f4bb0a60",
+    "revision": "dd512c2e03db5aede5f947b409b487aa",
     "url": "/qust-answer128/index.html"
   }
 ];
