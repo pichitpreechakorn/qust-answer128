@@ -1,7 +1,7 @@
 {
   "main.css": "/qust-answer128/static/css/main.ec13f59d.chunk.css",
-  "main.js": "/qust-answer128/static/js/main.6cf16614.chunk.js",
-  "main.js.map": "/qust-answer128/static/js/main.6cf16614.chunk.js.map",
+  "main.js": "/qust-answer128/static/js/main.570c78b0.chunk.js",
+  "main.js.map": "/qust-answer128/static/js/main.570c78b0.chunk.js.map",
   "static/css/1.88925aee.chunk.css": "/qust-answer128/static/css/1.88925aee.chunk.css",
   "static/js/1.d53b09b6.chunk.js": "/qust-answer128/static/js/1.d53b09b6.chunk.js",
   "static/js/1.d53b09b6.chunk.js.map": "/qust-answer128/static/js/1.d53b09b6.chunk.js.map",
@@ -12,6 +12,6 @@
   "static/css/main.ec13f59d.chunk.css.map": "/qust-answer128/static/css/main.ec13f59d.chunk.css.map",
   "static/css/1.88925aee.chunk.css.map": "/qust-answer128/static/css/1.88925aee.chunk.css.map",
   "index.html": "/qust-answer128/index.html",
-  "precache-manifest.53244cbbaddbb0072fe05f3496e4108f.js": "/qust-answer128/precache-manifest.53244cbbaddbb0072fe05f3496e4108f.js",
+  "precache-manifest.539a2620aa8c2543683deffa0bd356e7.js": "/qust-answer128/precache-manifest.539a2620aa8c2543683deffa0bd356e7.js",
   "service-worker.js": "/qust-answer128/service-worker.js"
 }
