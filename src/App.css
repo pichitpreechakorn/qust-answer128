@@ -43,6 +43,11 @@
   font-family: 'Kanit';
   color: #282c34;
 }
+#head-title2 {
+  font-family: 'Kanit';
+  color: #282c34;
+  text-align: right
+}
 .img-bg {
   position: absolute;
   width: 100%;

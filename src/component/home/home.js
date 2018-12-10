@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Card, Jumbotron, Row, Col } from 'reactstrap';
 import { Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import logo from '../../logo.svg';
 import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
+import ModalRegis from '../modal/modal_regis'
 import '../../App.css';
 
 class App extends Component {
@@ -12,7 +14,23 @@ class App extends Component {
     this.state = {
       headTitle: true,
       choice1: false,
-      choice2: false
+      choice2: false,
+      modal_regis: false,
+      status_choice: 0
+    }
+  }
+  addRegisSort() {
+    this.setState({ modal_regis: !this.state.modal_regis, status_choice: 0 })
+  }
+  addRegisRandom() {
+    this.setState({ modal_regis: !this.state.modal_regis, status_choice: 1 })
+  }
+  checkChoice() {
+    if (this.state.status_choice === 0) {
+      this.setState({ choice1: !this.state.choice1 })
+    }
+    else if (this.state.status_choice === 1) {
+      this.setState({ choice2: !this.status_choice })
     }
   }
   render() {
@@ -37,7 +55,9 @@ class App extends Component {
                         icon labelPosition='left'
                         inverted color='green'
                         size='large'
-                        onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}>
+                        // onClick={() => this.setState({ choice1: !this.state.choice1, choice2: false })}>
+                        onClick={this.addRegisSort.bind(this)}>
+
                         <Button.Content visible>
                           <Icon name='align justify' />
                           <span className="App">    แบบเรียงลำดับ</span>
@@ -52,14 +72,13 @@ class App extends Component {
                       <Button
                         animated
                         fluid
-                        
                         inverted color='blue'
                         size='large'
                         onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}>
-                        <Button.Content 
+                        <Button.Content
                           visible
                           icon labelPosition='left'
-                          >
+                        >
                           <Icon name='random' />
                           <span className="App">    แบบสุ่ม</span>
                         </Button.Content>
@@ -73,6 +92,19 @@ class App extends Component {
                 </div>
               </Jumbotron>
             }
+            {this.props.username.name === "" ?
+              <div>
+
+              </div>
+              :
+              <Jumbotron>
+                <h1 id="head-title2">คะแนน : {this.props.point}</h1>
+                <h2 id="head-title">หมายเลขความสูง : {this.props.username.higthNumber}</h2>
+                <h3 id="head-title">ชื่อ-นามสกุล : {this.props.username.name}  {this.props.username.lastname}</h3>
+                <h4 id="head-title">เลขที่ : {this.props.username.ground}{this.props.username.number}</h4>
+              </Jumbotron>
+            }
+
           </div>
 
           <div className="card-form">
@@ -95,6 +127,15 @@ class App extends Component {
                 </Col>
               </Row>
             }
+            {this.state.modal_regis &&
+              <Row>
+                <Col xs={10} sm={12} md={12}>
+                  <ModalRegis
+                    regis={this.checkChoice.bind(this)}
+                  />
+                </Col>
+              </Row>
+            }
           </div>
 
         </header>
@@ -103,4 +144,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    username: state.username,
+    score : state.score
+  }
+}
+
+export default connect(mapStateToProps)(App);

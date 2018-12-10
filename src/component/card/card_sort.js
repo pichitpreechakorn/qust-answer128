@@ -3,6 +3,7 @@ import {
     Card, CardText, CardBody, CardImg,
     CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
 } from 'reactstrap';
+import { connect} from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
@@ -33,6 +34,7 @@ class CardForm extends Component {
             this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
             // this.addNumber()
             this.checkEndQust()
+            this.props.setPoint(this.props.score.point + 1)
             this.getAnswer.value = ""
             console.log("ถูก")
         }
@@ -184,5 +186,21 @@ class CardForm extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {
+        score : state.score
+    }
+}
 
-export default CardForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        setPoint: (point) => {
+            dispatch({
+                type: "setPoint",
+                payload: point
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CardForm);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { Container, Row, Col } from 'reactstrap'
 import './App.css';
+import { connect } from 'react-redux'
 import BackgroundImage from 'react-background-image-loader';
 import Home from './component/home/home'
 import Nav from './component/nav/nav'
@@ -23,6 +24,7 @@ class App extends Component {
               <div className="bg-header">
                 <BackgroundImage src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg">
                   <Home
+                    point={this.props.score.point}
                     number={this.state.random}
                   />
                 </BackgroundImage>
@@ -54,4 +56,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    score : state.score
+  }
+}
+
+export default connect(mapStateToProps)(App);
