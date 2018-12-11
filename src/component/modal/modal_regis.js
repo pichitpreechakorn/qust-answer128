@@ -49,7 +49,7 @@ class ModalRegis extends React.Component {
                         <div>
                             <Form onSubmit={this.regisData}>
                                 <FormGroup>
-                                    <Label for="exampleSelect">เลขที่ตามลำดับความสูง : </Label>
+                                    <Label for="exampleSelect" id="text">เลขที่ตามลำดับความสูง : </Label>
                                     <Input
                                         type="number"
                                         name="higthNumber"
@@ -59,7 +59,7 @@ class ModalRegis extends React.Component {
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="exampleEmail">ชื่อ : </Label>
+                                    <Label for="exampleEmail" id="text">ชื่อ : </Label>
                                     <Input
                                         type="text"
                                         name="firstname"
@@ -69,7 +69,7 @@ class ModalRegis extends React.Component {
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="examplePassword">นามสกุล : </Label>
+                                    <Label for="examplePassword" id="text">นามสกุล : </Label>
                                     <Input
                                         type="text"
                                         name="lastname"
@@ -81,7 +81,7 @@ class ModalRegis extends React.Component {
                                 <Row Form>
                                     <Col md={6} sm={6} xs={12}>
                                         <FormGroup>
-                                            <Label for="exampleSelect">หมวด : </Label>
+                                            <Label for="exampleSelect" id="text">หมวด : </Label>
                                             <Input type="select" name="ground" id="ground" onChange={this.handleChang.bind(this)}>
                                                 <option value="0">เลือกหมวด</option>
                                                 <option value="A">1 (A)</option>
@@ -93,7 +93,7 @@ class ModalRegis extends React.Component {
                                     </Col>
                                     <Col md={6} sm={6} xs={12}>
                                         <FormGroup>
-                                            <Label for="exampleSelect">เลขที่ : </Label>
+                                            <Label for="exampleSelect" id="text">เลขที่ : </Label>
                                             <Input
                                                 type="number"
                                                 name="number"
@@ -108,7 +108,7 @@ class ModalRegis extends React.Component {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="success" onClick={() => this.nextStep()}> ต่อไป </Button>
+                        <Button color="success" block onClick={() => this.nextStep()}> ต่อไป </Button>
                     </ModalFooter>
                 </Modal>
             </div>

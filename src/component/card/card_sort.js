@@ -32,10 +32,12 @@ class CardForm extends Component {
     checkAnswer() {
         if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
             this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
-            // this.addNumber()
             this.checkEndQust()
-            this.props.setPoint(this.props.score.point + 1)
-            this.getAnswer.value = ""
+            if(this.props.score.point !== (this.state.number +1)){
+                this.props.setPoint(this.props.score.point + 1)
+                this.getAnswer.value = ""
+                this.props.getScore(true)
+            }
             console.log("ถูก")
         }
         else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
@@ -51,7 +53,7 @@ class CardForm extends Component {
     }
     checkEndQust() {
         console.log(this.props.number)
-        if (this.props.number + 1 === 1) {
+        if (this.props.number + 1 === 128) {
             console.log("จบ")
         }
     }

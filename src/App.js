@@ -15,7 +15,7 @@ class App extends Component {
       random: 0
     };
   }
-
+  
   render() {
     return (
         <Row>
@@ -24,7 +24,6 @@ class App extends Component {
               <div className="bg-header">
                 <BackgroundImage src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg">
                   <Home
-                    point={this.props.score.point}
                     number={this.state.random}
                   />
                 </BackgroundImage>

@@ -16,14 +16,25 @@ class App extends Component {
       choice1: false,
       choice2: false,
       modal_regis: false,
-      status_choice: 0
+      status_choice: 0,
+      scoreStatus: true
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.point)
+    console.log(this.props.point)
+    console.log(this.props.score.point)
+    // nextProps.point != this.props.point || this.props.point != this.props.score.point
   }
   addRegisSort() {
     this.setState({ modal_regis: !this.state.modal_regis, status_choice: 0 })
   }
   addRegisRandom() {
     this.setState({ modal_regis: !this.state.modal_regis, status_choice: 1 })
+  }
+  setScore() {
+    this.setState({ scoreStatus: true })
+    console.log("setScore" + this.props.score.point)
   }
   checkChoice() {
     if (this.state.status_choice === 0) {
@@ -98,7 +109,9 @@ class App extends Component {
               </div>
               :
               <Jumbotron>
-                <h1 id="head-title2">คะแนน : {this.props.point}</h1>
+                {this.state.scoreStatus &&
+                  <h1 id="head-title2">คะแนน : {this.props.score.point}</h1>
+                }
                 <h2 id="head-title">หมายเลขความสูง : {this.props.username.higthNumber}</h2>
                 <h3 id="head-title">ชื่อ-นามสกุล : {this.props.username.name}  {this.props.username.lastname}</h3>
                 <h4 id="head-title">เลขที่ : {this.props.username.ground}{this.props.username.number}</h4>
@@ -112,6 +125,7 @@ class App extends Component {
               <Row>
                 <Col xs={10} sm={10} md={10}>
                   <CardComponentSort
+                    getScore={this.setScore.bind(this)}
                     number={0}
                   />
                 </Col>
@@ -122,6 +136,7 @@ class App extends Component {
               <Row>
                 <Col xs={10} sm={12} md={12}>
                   <CardComponent
+                    getScore={this.setScore.bind(this)}
                     number={this.props.number}
                   />
                 </Col>
@@ -147,7 +162,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     username: state.username,
-    score : state.score
+    score: state.score
   }
 }
 

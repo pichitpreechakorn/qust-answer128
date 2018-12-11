@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { Button, Icon } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
+import { connect } from 'react-redux'
 import ModalFaild from '../modal/modal_fail'
 import dataQust from '../../data/dataQuest'
 import './card.css'
@@ -50,6 +51,8 @@ class CardForm extends Component {
     if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
       this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
       this.getAnswer.value = ""
+      this.props.setPoint(this.props.score.point + 1)
+      this.props.getScore(true)
       console.log("ถูก")
     }
     else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
@@ -190,4 +193,21 @@ class CardForm extends Component {
   }
 }
 
-export default CardForm;
+const mapStateToProps = state => {
+  return {
+      score : state.score
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      setPoint: (point) => {
+          dispatch({
+              type: "setPoint",
+              payload: point
+          })
+      }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CardForm);
