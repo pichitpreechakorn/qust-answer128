@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "570c78b06e2f2ed7b98b",
-    "url": "/qust-answer128/static/css/main.ec13f59d.chunk.css"
+    "revision": "a980144196065fb1e4cb",
+    "url": "/qust-answer128/static/css/main.179dde64.chunk.css"
   },
   {
-    "revision": "570c78b06e2f2ed7b98b",
-    "url": "/qust-answer128/static/js/main.570c78b0.chunk.js"
+    "revision": "a980144196065fb1e4cb",
+    "url": "/qust-answer128/static/js/main.a9801441.chunk.js"
   },
   {
-    "revision": "d53b09b6020ece59a77f",
-    "url": "/qust-answer128/static/css/1.88925aee.chunk.css"
+    "revision": "f481e76e7451e2369d34",
+    "url": "/qust-answer128/static/css/1.03d435bf.chunk.css"
   },
   {
-    "revision": "d53b09b6020ece59a77f",
-    "url": "/qust-answer128/static/js/1.d53b09b6.chunk.js"
+    "revision": "f481e76e7451e2369d34",
+    "url": "/qust-answer128/static/js/1.f481e76e.chunk.js"
   },
   {
     "revision": "5dd70a76b80c3770d16e",
@@ -56,16 +56,8 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.a046592b.woff"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/qust-answer128/static/media/flags.9c74e172.png"
-  },
-  {
     "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
     "url": "/qust-answer128/static/media/icons.8e3c7f55.eot"
-  },
-  {
-    "revision": "13db00b7a34fee4d819ab7f9838cc428",
-    "url": "/qust-answer128/static/media/brand-icons.13db00b7.eot"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
@@ -74,6 +66,14 @@ self.__precacheManifest = [
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
     "url": "/qust-answer128/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "13db00b7a34fee4d819ab7f9838cc428",
+    "url": "/qust-answer128/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/qust-answer128/static/media/flags.9c74e172.png"
   },
   {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "300e71000b8ff2c3f6529ed073ce6d8b",
+    "revision": "3c5398eddb605f24e803448ebb237345",
     "url": "/qust-answer128/index.html"
   }
 ];
