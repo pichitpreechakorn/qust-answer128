@@ -108,7 +108,7 @@ class ModalRegis extends React.Component {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="success" block onClick={() => this.nextStep()}> ต่อไป </Button>
+                        <Button color="success" block onClick={() => this.nextStep()} ><p id="next-btn">ต่อไป</p>  </Button>
                     </ModalFooter>
                 </Modal>
             </div>

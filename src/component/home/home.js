@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Jumbotron, Row, Col } from 'reactstrap';
+import { Jumbotron, Row, Col, Badge } from 'reactstrap';
 import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import logo from '../../logo.svg';
@@ -110,7 +110,7 @@ class App extends Component {
               :
               <Jumbotron>
                 {this.state.scoreStatus &&
-                  <h1 id="head-title2">คะแนน : {this.props.score.point}</h1>
+                  <h1 id="head-title2">คะแนน : <Badge color="success" pill>{this.props.score.point}</Badge></h1>
                 }
                 <h2 id="head-title">หมายเลขความสูง : {this.props.username.higthNumber}</h2>
                 <h3 id="head-title">ชื่อ-นามสกุล : {this.props.username.name}  {this.props.username.lastname}</h3>
