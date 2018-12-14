@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Jumbotron, Row, Col, Badge } from 'reactstrap';
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Header, Image, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import logo from '../../logo.svg';
 import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
 import ModalRegis from '../modal/modal_regis'
+import ModalStart from '../modal/modal_start'
 import '../../App.css';
 
 class App extends Component {
@@ -16,9 +17,17 @@ class App extends Component {
       choice1: false,
       choice2: false,
       modal_regis: false,
+      modal_start: false,
       status_choice: 0,
-      scoreStatus: true
+      scoreStatus: true,
     }
+  }
+  componentWillMount() {
+    console.log(this.state.modal_start)
+    this.setState({ modal_start: true })
+    setTimeout(() => {
+      this.setState({ modal_start: !this.state.modal_start })
+    }, 3000)
   }
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.point)
@@ -44,7 +53,9 @@ class App extends Component {
       this.setState({ choice2: !this.status_choice })
     }
   }
+
   render() {
+
     return (
       <div className="App">
         {/* <img src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg" className="img-bg"/> */}
@@ -151,8 +162,16 @@ class App extends Component {
                 </Col>
               </Row>
             }
+            {this.state.modal_start &&
+              <Row>
+                <Col xs={10} sm={12} md={12}>
+                  <ModalStart
+                  // regis={this.checkChoice.bind(this)}
+                  />
+                </Col>
+              </Row>
+            }
           </div>
-
         </header>
       </div>
     );

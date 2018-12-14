@@ -1,7 +1,8 @@
 .text-copyrigth {
-    padding-top: 10px;
+    padding: 20px;
     justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    text-align: right;
     color: #000;
     font-family: 'Kanit';
 }
@@ -22,5 +23,11 @@
 }
 .footer-bg{
     background-color: #fff;
-
+    height: 10%;
+}
+#facebook {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
 }

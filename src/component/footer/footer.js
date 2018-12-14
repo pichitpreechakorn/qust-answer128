@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from "reactstrap";
-import { Icon, Image } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import './footer.css'
 
 class Footer extends Component {
@@ -9,7 +9,15 @@ class Footer extends Component {
             <div className="footer-bg">
                 <Container>
                     <Row>
-                        <Col className="copyright" xs="12" sm="12">
+                        <Col className="copyright" xs="12" sm="6">
+                            {/* <p className="text-copyrigth">©PichitreeChakorn 7002 2018 v1.0.0</p> */}
+                            <Icon name="facebook" size='big' className="text-copyrigth" />
+                        </Col>
+                        {/* <Col className="copyright" xs="12" sm="4">
+                            <p className="text-copyrigth">©PichitreeChakorn 7002 2018 v1.0.0</p>
+                        </Col> */}
+
+                        <Col className="copyright" xs="12" sm="6">
                             <p className="text-copyrigth">©PichitreeChakorn 7002 2018 v1.0.0</p>
                         </Col>
 
