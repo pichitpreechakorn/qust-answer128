@@ -1,8 +1,7 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText, Col, Row } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux'
-import { Icon } from 'semantic-ui-react'
-
+import { Icon, Button } from 'semantic-ui-react'
 import './modal.css'
 
 class ModalRegis extends React.Component {
@@ -43,7 +42,7 @@ class ModalRegis extends React.Component {
             <div>
                 <Modal isOpen={this.state.modal} >
                     <ModalHeader>
-                        <p id="text">กรอกชื่อ - นามสกุล</p>
+                        <h2 id="text">กรอกชื่อ - นามสกุล</h2>
                     </ModalHeader>
                     <ModalBody>
                         <div>
@@ -108,7 +107,12 @@ class ModalRegis extends React.Component {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="success" block onClick={() => this.nextStep()} ><p id="next-btn">ต่อไป</p>  </Button>
+                        <Button
+                            fluid
+                            inverted 
+                            color='green'
+                            size='large'
+                            onClick={() => this.nextStep()} ><span id="next-btn">ต่อไป</span>  </Button>
                     </ModalFooter>
                 </Modal>
             </div>

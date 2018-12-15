@@ -6,7 +6,7 @@ import logo from '../../logo.svg';
 import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
 import ModalRegis from '../modal/modal_regis'
-import ModalStart from '../modal/modal_start'
+import ModalStart from '../modal/modal_end'
 import '../../App.css';
 
 class App extends Component {
@@ -22,24 +22,18 @@ class App extends Component {
       scoreStatus: true,
     }
   }
-  componentWillMount() {
-    console.log(this.state.modal_start)
-    this.setState({ modal_start: true })
-    setTimeout(() => {
-      this.setState({ modal_start: !this.state.modal_start })
-    }, 3000)
-  }
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.point)
-    console.log(this.props.point)
-    console.log(this.props.score.point)
-    // nextProps.point != this.props.point || this.props.point != this.props.score.point
-  }
+  // componentWillMount() {
+  //   console.log(this.state.modal_start)
+  //   this.setState({ modal_start: true })
+  //   // setTimeout(() => {
+  //   //   this.setState({ modal_start: !this.state.modal_start })
+  //   // }, 3000)
+  // }
   addRegisSort() {
     this.setState({ modal_regis: !this.state.modal_regis, status_choice: 0 })
   }
   addRegisRandom() {
-    this.setState({ modal_regis: !this.state.modal_regis, status_choice: 1 })
+    this.setState({ modal_regis: !this.state.modal_regis, status_choice: 1, choice2: !this.state.choice2, choice1: false })
   }
   setScore() {
     this.setState({ scoreStatus: true })
@@ -96,7 +90,7 @@ class App extends Component {
                         fluid
                         inverted color='blue'
                         size='large'
-                        onClick={() => this.setState({ choice2: !this.state.choice2, choice1: false })}>
+                        onClick={this.addRegisRandom.bind(this)}>
                         <Button.Content
                           visible
                           icon labelPosition='left'
@@ -119,14 +113,17 @@ class App extends Component {
 
               </div>
               :
-              <Jumbotron>
-                {this.state.scoreStatus &&
-                  <h1 id="head-title2">คะแนน : <Badge color="success" pill>{this.props.score.point}</Badge></h1>
-                }
-                <h2 id="head-title">หมายเลขความสูง : {this.props.username.higthNumber}</h2>
-                <h3 id="head-title">ชื่อ-นามสกุล : {this.props.username.name}  {this.props.username.lastname}</h3>
-                <h4 id="head-title">เลขที่ : {this.props.username.ground}{this.props.username.number}</h4>
-              </Jumbotron>
+              <div>
+                <Jumbotron>
+                  {this.state.scoreStatus &&
+                    <h1 id="head-title2">คะแนน : <Badge color="success" pill>{this.props.score.point}</Badge></h1>
+                  }
+                  <h2 id="head-title">หมายเลขความสูง : {this.props.username.higthNumber}</h2>
+                  <h3 id="head-title">ชื่อ-นามสกุล : {this.props.username.name}  {this.props.username.lastname}</h3>
+                  <h4 id="head-title">เลขที่ : {this.props.username.ground}{this.props.username.number}</h4>
+                </Jumbotron>
+              </div>
+
             }
 
           </div>

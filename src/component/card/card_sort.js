@@ -3,10 +3,11 @@ import {
     Card, CardText, CardBody, CardImg,
     CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
 } from 'reactstrap';
-import { connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
+import ModalEnd from '../modal/modal_end'
 import dataQust from '../../data/dataQuest'
 import './card.css'
 
@@ -17,7 +18,8 @@ class CardForm extends Component {
             statusModalSuccess: false,
             statusModalFail: false,
             status_textarea: 1,
-            number: this.props.number
+            number: this.props.number,
+            modalEnd: false
         };
     }
     handleSubmit = (e) => {
@@ -33,7 +35,7 @@ class CardForm extends Component {
         if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
             this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
             this.checkEndQust()
-            if(this.props.score.point !== (this.state.number +1)){
+            if (this.props.score.point !== (this.state.number + 1)) {
                 this.props.setPoint(this.props.score.point + 1)
                 this.getAnswer.value = ""
                 this.props.getScore(true)
@@ -54,7 +56,9 @@ class CardForm extends Component {
     checkEndQust() {
         console.log(this.props.number)
         if (this.props.number + 1 === 128) {
+            // if (this.props.number + 1 === 1) {
             console.log("จบ")
+            this.setState({ modalEnd: true })
         }
     }
     addNumber() {
@@ -176,6 +180,10 @@ class CardForm extends Component {
                         answer={dataQust[this.state.number].answer}
                     />
                 }
+                {
+                    this.state.modalEnd &&
+                    <ModalEnd />
+                }
                 {/* {
                     this.state.statusModalFail &&
                     <ModalFaild
@@ -190,7 +198,7 @@ class CardForm extends Component {
 }
 const mapStateToProps = state => {
     return {
-        score : state.score
+        score: state.score
     }
 }
 
@@ -205,4 +213,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CardForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CardForm);

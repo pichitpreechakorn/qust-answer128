@@ -67,3 +67,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.modal-start-body{
+  justify-content: center;
+  text-align: center;
+}
+span{
+  font-family: 'Kanit';
+}
