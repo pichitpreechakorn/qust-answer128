@@ -59,7 +59,7 @@ class App extends Component {
           <div id="headTitle">
             {this.state.headTitle &&
               <Jumbotron>
-                <h1 id="head-title">การสอนอมรม 128 ข้อ</h1>
+                <Header size='large' id="head-title">การสอนอมรม 128 ข้อ</Header>
                 <hr />
                 <label id="head-title">เลือกรูปแบบคำถาม</label>
                 <div className="btn-start">

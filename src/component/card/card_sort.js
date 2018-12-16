@@ -4,7 +4,7 @@ import {
     CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
 } from 'reactstrap';
 import { connect } from 'react-redux'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon,Header } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
 import ModalEnd from '../modal/modal_end'
@@ -80,7 +80,7 @@ class CardForm extends Component {
                 <Card>
                     <CardBody>
                         <CardTitle id="text">
-                            <p id="text-no"> ข้อที่ {dataQust[this.state.number].no} </p>
+                            <Header size='medium' id="text-no"> ข้อที่ {dataQust[this.state.number].no} </Header>
                             {/* <Label> ข้อที่ {this.state.number + 1} </Label> */}
 
                         </CardTitle>
@@ -89,7 +89,7 @@ class CardForm extends Component {
                                 <div id="contai-quest">
                                     <Row>
                                         <Col sm="2" xs="2">
-                                            <p id="text-sub"> <u>ถาม :</u> </p>
+                                            <p id="text-sub"> <b>ถาม :</b> </p>
                                         </Col>
                                         <Col sm="10" xs="10">
                                             <p id="text-sub"> {dataQust[this.state.number].qust} </p>
@@ -100,7 +100,7 @@ class CardForm extends Component {
                                     <Form onSubmit={this.handleSubmit}>
                                         <FormGroup row>
                                             <Col sm="2" xs="2">
-                                                <p id="text-sub"> <u>ตอบ :</u> </p>
+                                                <p id="text-sub"> <b>ตอบ :</b> </p>
                                             </Col>
                                             <Col sm="10" xs="10">
                                                 {this.state.status_textarea === 0 ?

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Card, CardText, CardBody, CardImg,
-  CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
-} from 'reactstrap';
-import { Button, Icon } from 'semantic-ui-react'
+import { Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback } from 'reactstrap';
+import { Button, Icon, Header,Card } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import { connect } from 'react-redux'
 import ModalFaild from '../modal/modal_fail'
@@ -81,19 +78,20 @@ class CardForm extends Component {
       <div class="card-form">
         <Row>
           <Col xs={12} md={12} sm={12}>
-            <Card>
-              <CardBody>
-                <CardTitle id="text">
+            <Card fluid color="orange">
+              <Card.Content>
+                
+                <Card.Header id="text">
                   {/* <Label> ข้อที่ {dataQust[0].no} </Label> */}
-                  <Label id="text-no"> ข้อที่ {dataQust[this.state.number].no} </Label>
+                  <Header size='medium' id="text-no"> ข้อที่ {dataQust[this.state.number].no} </Header>
 
-                </CardTitle>
-                <CardBody>
+                </Card.Header>
+                <Card.Content>
                   <div className="form-body">
                     <div id="contai-quest">
                       <Row>
                         <Col sm={2} xs={2}>
-                          <p id="text-sub"> <u>ถาม :</u> </p>
+                          <p id="text-sub"> <b>ถาม :</b> </p>
                         </Col>
                         <Col sm={10} xs={10}>
                           <p id="text-sub"> {dataQust[this.state.number].qust} </p>
@@ -104,7 +102,7 @@ class CardForm extends Component {
                       <Form onSubmit={this.handleSubmit}>
                         <FormGroup row>
                           <Col sm={2} xs={2}>
-                            <p id="text-sub"> <u>ตอบ :</u> </p>
+                            <p id="text-sub"> <b>ตอบ :</b> </p>
                           </Col>
                           <Col sm={10} xs={10}>
                             {this.state.status_textarea === 0 ?
@@ -154,7 +152,7 @@ class CardForm extends Component {
                       </Form>
                     </div>
                   </div>
-                </CardBody>
+                </Card.Content>
                 <Alert color="warning">
                   <Row>
                     <Col sm={2} md={2} xs={2}>
@@ -169,7 +167,7 @@ class CardForm extends Component {
                     </Col>
                   </Row>
                 </Alert>
-              </CardBody>
+              </Card.Content>
             </Card>
             {
               this.state.statusModalSuccess &&
@@ -195,19 +193,19 @@ class CardForm extends Component {
 
 const mapStateToProps = state => {
   return {
-      score : state.score
+    score: state.score
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-      setPoint: (point) => {
-          dispatch({
-              type: "setPoint",
-              payload: point
-          })
-      }
+    setPoint: (point) => {
+      dispatch({
+        type: "setPoint",
+        payload: point
+      })
+    }
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CardForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CardForm);
