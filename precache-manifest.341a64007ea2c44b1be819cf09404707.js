@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "16e1edcc9c030d306d4b",
+    "revision": "2e50e0489881d7a712f4",
     "url": "/qust-answer128/static/css/main.3ed90d54.chunk.css"
   },
   {
-    "revision": "16e1edcc9c030d306d4b",
-    "url": "/qust-answer128/static/js/main.16e1edcc.chunk.js"
+    "revision": "2e50e0489881d7a712f4",
+    "url": "/qust-answer128/static/js/main.2e50e048.chunk.js"
   },
   {
-    "revision": "e3a48e66102a87f6101a",
+    "revision": "4d5e89a28b3db41daef3",
     "url": "/qust-answer128/static/css/1.04d0583c.chunk.css"
   },
   {
-    "revision": "e3a48e66102a87f6101a",
-    "url": "/qust-answer128/static/js/1.e3a48e66.chunk.js"
+    "revision": "4d5e89a28b3db41daef3",
+    "url": "/qust-answer128/static/js/1.4d5e89a2.chunk.js"
   },
   {
     "revision": "5dd70a76b80c3770d16e",
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "e8c322de9658cbeb8a774b6624167c2c",
-    "url": "/qust-answer128/static/media/brand-icons.e8c322de.woff2"
-  },
-  {
     "revision": "faff92145777a3cbaf8e7367b4807987",
     "url": "/qust-answer128/static/media/icons.faff9214.woff"
+  },
+  {
+    "revision": "e8c322de9658cbeb8a774b6624167c2c",
+    "url": "/qust-answer128/static/media/brand-icons.e8c322de.woff2"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -72,12 +72,12 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
-    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
-    "url": "/qust-answer128/static/media/icons.b87b9ba5.ttf"
-  },
-  {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
     "url": "/qust-answer128/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
+    "url": "/qust-answer128/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "962a1bf31c081691065fe333d9fa8105",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "26d4eb2ae4d66a65460a5883ae6cd34c",
+    "revision": "124a4b7ce6a90e1183704bcd97221aa7",
     "url": "/qust-answer128/index.html"
   }
 ];
