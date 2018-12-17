@@ -33,10 +33,17 @@ class ModalStart extends React.Component {
           <ModalFooter>
             <Button
               fluid
+              animated
               inverted color='blue'
               size='large'
               onClick={this.toggle}>
-              <span>เริ่มการทดสอบ</span>
+              <Button.Content visible>
+                <Icon name='arrow right' />
+                <span>ต่อไป</span>
+              </Button.Content>
+              <Button.Content hidden>
+                <Icon name='arrow right' />
+              </Button.Content>
             </Button>{' '}
             {/* <Button color="secondary" onClick={this.toggle}>Cancel</Button> */}
           </ModalFooter>

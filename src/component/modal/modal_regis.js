@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText, Col, Row } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux'
 import { Icon, Button } from 'semantic-ui-react'
 import './modal.css'
@@ -109,10 +109,21 @@ class ModalRegis extends React.Component {
                     <ModalFooter>
                         <Button
                             fluid
-                            inverted 
+                            animated
+                            inverted
                             color='green'
                             size='large'
-                            onClick={() => this.nextStep()} ><span id="next-btn">ต่อไป</span>  </Button>
+                            onClick={() => this.nextStep()} >
+                            <Button.Content
+                                visible
+                                icon labelPosition='left'
+                            >
+                                <span id="next-btn">ต่อไป</span>
+                            </Button.Content>
+                            <Button.Content hidden>
+                                <Icon name='arrow right' />
+                            </Button.Content>
+                        </Button>
                     </ModalFooter>
                 </Modal>
             </div>

@@ -32,7 +32,7 @@ class CardForm extends Component {
         this.checkAnswer()
     }
     checkAnswer() {
-        if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2)) {
+        if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2 || this.getAnswer.value === dataQust[this.state.number].answer3 || this.getAnswer.value === dataQust[this.state.number].answer4)) {
             this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
             this.checkEndQust()
             if (this.props.score.point !== (this.state.number + 1)) {
