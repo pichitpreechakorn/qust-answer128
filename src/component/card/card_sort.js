@@ -4,11 +4,13 @@ import {
     CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback
 } from 'reactstrap';
 import { connect } from 'react-redux'
-import { Button, Icon,Header } from 'semantic-ui-react'
+import { Button, Icon, Header } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import ModalFaild from '../modal/modal_fail'
 import ModalEnd from '../modal/modal_end'
 import dataQust from '../../data/dataQuest'
+import dataNumberFail from '../../data/dataNumber_fail'
+import dataNumberSuscess from '../../data/dataNumber_suscess'
 import './card.css'
 
 class CardForm extends Component {
@@ -19,6 +21,7 @@ class CardForm extends Component {
             statusModalFail: false,
             status_textarea: 1,
             number: this.props.number,
+            count: 0,
             modalEnd: false
         };
     }
@@ -35,22 +38,30 @@ class CardForm extends Component {
         if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2 || this.getAnswer.value === dataQust[this.state.number].answer3 || this.getAnswer.value === dataQust[this.state.number].answer4)) {
             this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
             this.checkEndQust()
-            if (this.props.score.point !== (this.state.number + 1)) {
-                this.props.setPoint(this.props.score.point + 1)
-                this.getAnswer.value = ""
-                this.props.getScore(true)
-            }
+            dataNumberSuscess.push(this.state.number)
+            this.props.addSuscess(dataNumberSuscess)
+            this.checkErrorSuscess()
+            console.log(dataNumberSuscess)
             console.log("ถูก")
         }
         else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
-            this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
+            this.setState({ status_textarea: 0, count: this.state.count + 1 })
             this.getAnswer.value = ""
+            this.checkCountFail()
             console.log("ผิด")
         }
         else if (this.getAnswer.value === "") {
-            this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
+            this.setState({ status_textarea: 0, count: this.state.count + 1 })
             this.getAnswer.value = ""
+            this.checkCountFail()
             console.log("ผิด")
+        }
+    }
+    checkErrorSuscess() {
+        if (this.props.score.point !== (this.state.number + 1)) {
+            this.props.setPoint(this.props.score.point + 1)
+            this.getAnswer.value = ""
+            this.props.getScore(true)
         }
     }
     checkEndQust() {
@@ -61,10 +72,20 @@ class CardForm extends Component {
             this.setState({ modalEnd: true })
         }
     }
+    checkCountFail() {
+        if (this.state.count === 1) {
+            dataNumberFail.push(this.state.number)
+            this.setState({ count: 0, statusModalFail: !this.state.statusModalFail })
+            this.addNumber()
+            this.props.addFail(dataNumberFail)
+            console.log(dataNumberFail)
+
+        }
+    }
     addNumber() {
         this.getAnswer.value = ""
         console.log(this.state.number + 1)
-        this.setState({ number: this.state.number + 1 })
+        this.setState({ number: this.state.number + 1, status_textarea: 1 })
     }
     closeModal(status) {
         this.setState({
@@ -114,7 +135,7 @@ class CardForm extends Component {
                                                             innerRef={(input) => this.getAnswer = input}
                                                             placeholder="คำตอบ ............................... "
                                                         />
-                                                        <FormFeedback>คำตอบไม่ถูกต้อง !</FormFeedback>
+                                                        <FormFeedback>คำตอบไม่ถูกต้อง ! สามารถตอบได้อีก 1 ครั้ง</FormFeedback>
                                                     </div>
                                                     :
                                                     <div className="contai-textarea">
@@ -184,13 +205,13 @@ class CardForm extends Component {
                     this.state.modalEnd &&
                     <ModalEnd />
                 }
-                {/* {
+                {
                     this.state.statusModalFail &&
                     <ModalFaild
                         closemodal={this.closeModal.bind(this)}
                         answer={dataQust[this.state.number].answer}
                     />
-                } */}
+                }
 
             </div>
         );
@@ -208,6 +229,18 @@ const mapDispatchToProps = dispatch => {
             dispatch({
                 type: "setPoint",
                 payload: point
+            })
+        },
+        addSuscess: (suscess) => {
+            dispatch({
+                type: "addSuscess",
+                payload: suscess
+            })
+        },
+        addFail: (fail) => {
+            dispatch({
+                type: "addFail",
+                payload: fail
             })
         }
     }

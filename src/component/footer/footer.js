@@ -11,7 +11,9 @@ class Footer extends Component {
                     <Row>
                         <Col className="copyright" xs="12" sm="6">
                             {/* <p className="text-copyrigth">©PichitreeChakorn 7002 2018 v1.0.0</p> */}
-                            <Icon name="facebook" size='big' className="text-copyrigth" />
+                            <a href="https://www.facebook.com/wearesuddan7002/" target="_blank">
+                                <Icon name="facebook" size='big' className="text-copyrigth" />
+                            </a>
                         </Col>
                         {/* <Col className="copyright" xs="12" sm="4">
                             <p className="text-copyrigth">©PichitreeChakorn 7002 2018 v1.0.0</p>

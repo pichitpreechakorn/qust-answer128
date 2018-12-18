@@ -44,7 +44,7 @@ export default class Example extends React.Component {
                 <NavLink href="/components/" id="text-head">คำแนะนำ</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap" id="text-head">ติดต่อ</NavLink>
+                <NavLink href="http://www.suddan7002.com/" id="text-head" target="_blank">ติดต่อ</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap" id="text-head">เกี่ยวกับ</NavLink>

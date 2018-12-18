@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Col, Row, Alert, FormFeedback } from 'reactstrap';
-import { Button, Icon, Header,Card } from 'semantic-ui-react'
+import { Button, Icon, Header, Card } from 'semantic-ui-react'
 import ModalSuccess from '../modal/modal_success'
 import { connect } from 'react-redux'
 import ModalFaild from '../modal/modal_fail'
 import dataQust from '../../data/dataQuest'
+import dataNumberFail from '../../data/dataNumber_fail'
+import dataNumberSuscess from '../../data/dataNumber_suscess'
 import './card.css'
 
 class CardForm extends Component {
@@ -80,7 +82,7 @@ class CardForm extends Component {
           <Col xs={12} md={12} sm={12}>
             <Card fluid color="orange">
               <Card.Content>
-                
+
                 <Card.Header id="text">
                   {/* <Label> ข้อที่ {dataQust[0].no} </Label> */}
                   <Header size='medium' id="text-no"> ข้อที่ {dataQust[this.state.number].no} </Header>
@@ -149,10 +151,30 @@ class CardForm extends Component {
                             <label id="btn-submit">  ส่งคำตอบ </label>
                           </Button.Content>
                         </Button>
+
                       </Form>
+
                     </div>
                   </div>
                 </Card.Content>
+                <div className="send-point">
+                  <Button
+                    animated
+                    fluid
+                    inverted color='blue'
+                    size='large'
+                    onClick={this.toggle.bind(this)}
+                  >
+                    <Button.Content visible>
+                      <label id="btn-submit"> ส่งคะแนนคำตอบ </label>
+                    </Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='send' />
+                      <label id="btn-submit">  ส่งคำตอบ </label>
+                    </Button.Content>
+                  </Button>
+                </div>
+
                 <Alert color="warning">
                   <Row>
                     <Col sm={2} md={2} xs={2}>

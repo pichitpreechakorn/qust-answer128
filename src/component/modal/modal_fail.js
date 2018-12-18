@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Label } from 'reactstrap';
+import { Icon, Button } from 'semantic-ui-react'
 import './modal.css'
 
 class ModalSuccess extends React.Component {
@@ -10,26 +11,41 @@ class ModalSuccess extends React.Component {
         };
 
     }
-    closeModal(){
+    closeModal() {
         this.props.closemodal(false)
-    }  
+    }
     render() {
         return (
             <div>
                 <Modal isOpen={this.state.modal} >
                     <ModalHeader>
-                        <p id="text">คำตอบผิด</p>
+                        <h2 id="text">คำตอบผิด</h2>
                     </ModalHeader>
                     <ModalBody>
                         <div>
-                            <p id="textAnswer">
-                                <b>เฉลย : </b>{this.props.answer}
-                            </p>
+                            <Label id="textAnswer">
+                                เฉลย : {this.props.answer}
+                            </Label>
                         </div>
                     </ModalBody>
                     <ModalFooter>
                         {/* <Button color="primary" onClick={() => this.setState({ modal: !this.state.modal })}>Do Something</Button> */}
-                        <Button color="secondary" onClick={() => this.closeModal()}>ปิด</Button>
+                        <Button
+                            fluid
+                            animated
+                            color='grey'
+                            size='large'
+                            onClick={() => this.closeModal()} >
+                            <Button.Content
+                                visible
+                                icon labelPosition='left'
+                            >
+                                <span id="next-btn">ปิด</span>
+                            </Button.Content>
+                            <Button.Content hidden>
+                                <Icon name='delete' />
+                            </Button.Content>
+                        </Button>
                     </ModalFooter>
                 </Modal>
             </div>

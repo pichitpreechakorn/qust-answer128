@@ -7,7 +7,7 @@ const score = (state = { point: 0 }, action) => {
             state.point = action.payload
             break;
         }
-        default : {
+        default: {
 
         }
     }
@@ -19,15 +19,35 @@ const username = (state =
         surname: "",
         ground: "",
         number: "",
-        higthnumber : ""
+        higthnumber: ""
     }, action) => {
     switch (action.type) {
         case "setUsername": {
             state = action.payload
             break;
         }
+        default: {
+
+        }
+    }
+    return state
+}
+const number = (state =
+    {
+        suscess: [],
+        fail: []
+    }, action) => {
+    switch (action.type) {
+        case "addSuscess": {
+            state = action.payload
+            break;
+        }
+        case "addFail" : {
+            state = action.payload
+            break;
+        }
         default : {
-            
+
         }
     }
     return state
@@ -43,7 +63,8 @@ const myLogger = store => next => action => {
 const store = createStore(
     combineReducers({
         score,
-        username
+        username,
+        number
     }),
     {},
     applyMiddleware(myLogger)
