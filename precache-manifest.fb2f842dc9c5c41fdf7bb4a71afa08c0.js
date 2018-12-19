@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "2e50e0489881d7a712f4",
-    "url": "/qust-answer128/static/css/main.3ed90d54.chunk.css"
+    "revision": "83d098dcc61826ba8979",
+    "url": "/qust-answer128/static/css/main.4b2677dc.chunk.css"
   },
   {
-    "revision": "2e50e0489881d7a712f4",
-    "url": "/qust-answer128/static/js/main.2e50e048.chunk.js"
+    "revision": "83d098dcc61826ba8979",
+    "url": "/qust-answer128/static/js/main.83d098dc.chunk.js"
   },
   {
-    "revision": "4d5e89a28b3db41daef3",
+    "revision": "8d78aa97098904c234b7",
     "url": "/qust-answer128/static/css/1.04d0583c.chunk.css"
   },
   {
-    "revision": "4d5e89a28b3db41daef3",
-    "url": "/qust-answer128/static/js/1.4d5e89a2.chunk.js"
+    "revision": "8d78aa97098904c234b7",
+    "url": "/qust-answer128/static/js/1.8d78aa97.chunk.js"
   },
   {
     "revision": "5dd70a76b80c3770d16e",
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/qust-answer128/static/media/icons.faff9214.woff"
-  },
-  {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
     "url": "/qust-answer128/static/media/brand-icons.e8c322de.woff2"
+  },
+  {
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/qust-answer128/static/media/icons.faff9214.woff"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/qust-answer128/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "124a4b7ce6a90e1183704bcd97221aa7",
+    "revision": "87eaeecade00ce0aab2e7ac9eed74c16",
     "url": "/qust-answer128/index.html"
   }
 ];
