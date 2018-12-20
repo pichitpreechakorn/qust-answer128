@@ -7,6 +7,8 @@ import CardComponent from '../card/card'
 import CardComponentSort from '../card/card_sort'
 import ModalRegis from '../modal/modal_regis'
 import ModalStart from '../modal/modal_end'
+import firebase from 'firebase'
+import firebaseConfig from '../../config/firebase_config'
 import '../../App.css';
 
 class App extends Component {
@@ -21,6 +23,14 @@ class App extends Component {
       status_choice: 0,
       scoreStatus: true,
     }
+    firebase.initializeApp(firebaseConfig)
+
+  }
+  componentDidMount() {
+    let arr = [1,0]
+    let dbCon = firebase.database().ref('group/a');
+    dbCon.child('a1').child('fail').set(arr);
+    console.log("test")
   }
   // componentWillMount() {
   //   console.log(this.state.modal_start)
@@ -49,7 +59,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         {/* <img src="https://images6.alphacoders.com/310/thumb-1920-310137.jpg" className="img-bg"/> */}
