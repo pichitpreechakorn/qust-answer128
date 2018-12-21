@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux'
 import { Icon, Button } from 'semantic-ui-react'
+
 import './modal.css'
 
 class ModalRegis extends React.Component {
@@ -11,12 +12,14 @@ class ModalRegis extends React.Component {
             modal: true,
             ground: ""
         };
-
     }
     nextStep() {
         this.setState({ modal: !this.state.modal })
         this.regisData()
         this.props.regis()
+        setTimeout(() => {
+            this.props.firebaseRegis()
+        }, 1000)
         // this.props.addNumber()
     }
     closeModal() {
@@ -34,6 +37,7 @@ class ModalRegis extends React.Component {
             number: this.getNumber.value,
             ground: this.state.ground
         }
+
         console.log(user)
         this.props.setUsername(user)
     }

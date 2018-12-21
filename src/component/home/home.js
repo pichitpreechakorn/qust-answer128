@@ -9,6 +9,8 @@ import ModalRegis from '../modal/modal_regis'
 import ModalStart from '../modal/modal_end'
 import firebase from 'firebase'
 import firebaseConfig from '../../config/firebase_config'
+import dataNumberSuscess from '../../data/dataNumber_suscess'
+import dataNumberFail from '../../data/dataNumber_fail'
 import '../../App.css';
 
 class App extends Component {
@@ -26,12 +28,12 @@ class App extends Component {
     firebase.initializeApp(firebaseConfig)
 
   }
-  componentDidMount() {
-    let arr = [1,0]
-    let dbCon = firebase.database().ref('group/a');
-    dbCon.child('a1').child('fail').set(arr);
-    console.log("test")
-  }
+  // componentDidMount() {
+  //   let arr = [1,0]
+  //   let dbCon = firebase.database().ref('group/a');
+  //   dbCon.child('a1').child('fail').set(arr);
+  //   console.log("test")
+  // }
   // componentWillMount() {
   //   console.log(this.state.modal_start)
   //   this.setState({ modal_start: true })
@@ -39,6 +41,18 @@ class App extends Component {
   //   //   this.setState({ modal_start: !this.state.modal_start })
   //   // }, 3000)
   // }
+  sendMainFirebase() {
+    const dbCon2 = firebase.database().ref('group/' + this.props.username.ground);
+    dbCon2.child('' + this.props.username.ground + '' + this.props.username.number).child('score').set(this.props.score.point);
+    dbCon2.child('' + this.props.username.ground + '' + this.props.username.number).child('suscess').set(dataNumberSuscess);
+    dbCon2.child('' + this.props.username.ground + '' + this.props.username.number).child('fail').set(dataNumberFail);
+  }
+
+  senProfileFirebase() {
+    const dbCon = firebase.database().ref('group/' + this.props.username.ground);
+    dbCon.child('' + this.props.username.ground + '' + this.props.username.number).child('profile').set(this.props.username);
+  }
+
   addRegisSort() {
     this.setState({ modal_regis: !this.state.modal_regis, status_choice: 0 })
   }
@@ -144,6 +158,7 @@ class App extends Component {
                   <CardComponentSort
                     getScore={this.setScore.bind(this)}
                     number={0}
+                    firebase={this.sendMainFirebase.bind(this)}
                   />
                 </Col>
               </Row>
@@ -155,6 +170,7 @@ class App extends Component {
                   <CardComponent
                     getScore={this.setScore.bind(this)}
                     number={this.props.number}
+                    firebase={this.sendMainFirebase.bind(this)}
                   />
                 </Col>
               </Row>
@@ -164,6 +180,7 @@ class App extends Component {
                 <Col xs={10} sm={12} md={12}>
                   <ModalRegis
                     regis={this.checkChoice.bind(this)}
+                    firebaseRegis={this.senProfileFirebase.bind(this)}
                   />
                 </Col>
               </Row>
@@ -187,7 +204,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     username: state.username,
-    score: state.score
+    score: state.score,
+    number: state.number
   }
 }
 

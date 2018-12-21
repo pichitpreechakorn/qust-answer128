@@ -11,6 +11,7 @@ import ModalEnd from '../modal/modal_end'
 import dataQust from '../../data/dataQuest'
 import dataNumberFail from '../../data/dataNumber_fail'
 import dataNumberSuscess from '../../data/dataNumber_suscess'
+
 import './card.css'
 
 class CardForm extends Component {
@@ -24,6 +25,7 @@ class CardForm extends Component {
             count: 0,
             modalEnd: false
         };
+        // firebase.initializeApp(firebaseConfig)
     }
     handleSubmit = (e) => {
         console.log(this.getAnswer.value)
@@ -41,6 +43,7 @@ class CardForm extends Component {
             dataNumberSuscess.push(this.state.number)
             this.props.addSuscess(dataNumberSuscess)
             this.checkErrorSuscess()
+            this.props.firebase()
             console.log(dataNumberSuscess)
             console.log("ถูก")
         }
@@ -48,12 +51,14 @@ class CardForm extends Component {
             this.setState({ status_textarea: 0, count: this.state.count + 1 })
             this.getAnswer.value = ""
             this.checkCountFail()
+            this.props.firebase()
             console.log("ผิด")
         }
         else if (this.getAnswer.value === "") {
             this.setState({ status_textarea: 0, count: this.state.count + 1 })
             this.getAnswer.value = ""
             this.checkCountFail()
+            this.props.firebase()
             console.log("ผิด")
         }
     }
@@ -66,7 +71,7 @@ class CardForm extends Component {
     }
     checkEndQust() {
         console.log(this.props.number)
-        if (this.props.number + 1 === 128) {
+        if (this.props.number + 1 === 3) {
             // if (this.props.number + 1 === 1) {
             console.log("จบ")
             this.setState({ modalEnd: true })
@@ -82,6 +87,12 @@ class CardForm extends Component {
 
         }
     }
+    checkIndexNumber(){
+        if(this.state.number !== this.state.number){
+
+        }
+    }
+    
     addNumber() {
         this.getAnswer.value = ""
         console.log(this.state.number + 1)
@@ -219,7 +230,8 @@ class CardForm extends Component {
 }
 const mapStateToProps = state => {
     return {
-        score: state.score
+        score: state.score,
+        username: state.username
     }
 }
 
