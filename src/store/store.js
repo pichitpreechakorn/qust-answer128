@@ -14,13 +14,13 @@ const score = (state = { point: 0 }, action) => {
     return state
 }
 const username = (state =
-    {
+    [{
         name: "",
         surname: "",
         ground: "",
         number: "",
         higthnumber: ""
-    }, action) => {
+    }], action) => {
     switch (action.type) {
         case "setUsername": {
             state = action.payload
@@ -42,11 +42,11 @@ const number = (state =
             state = action.payload
             break;
         }
-        case "addFail" : {
+        case "addFail": {
             state = action.payload
             break;
         }
-        default : {
+        default: {
 
         }
     }

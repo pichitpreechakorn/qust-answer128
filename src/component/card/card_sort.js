@@ -49,15 +49,14 @@ class CardForm extends Component {
         }
         else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
             this.setState({ status_textarea: 0, count: this.state.count + 1 })
-            this.getAnswer.value = ""
-            this.checkCountFail()
+
+            this.checkCountFail(this.getAnswer.value)
             this.props.firebase()
             console.log("ผิด")
         }
         else if (this.getAnswer.value === "") {
             this.setState({ status_textarea: 0, count: this.state.count + 1 })
-            this.getAnswer.value = ""
-            this.checkCountFail()
+            this.checkCountFail(this.getAnswer.value)
             this.props.firebase()
             console.log("ผิด")
         }
@@ -77,22 +76,27 @@ class CardForm extends Component {
             this.setState({ modalEnd: true })
         }
     }
-    checkCountFail() {
+    checkCountFail(answer) {
+        const dataFail = {
+            qust: dataQust[this.state.number].qust,
+            answer: this.getAnswer.value,
+            status: false
+        }
         if (this.state.count === 1) {
-            dataNumberFail.push(this.state.number)
+            this.getAnswer.value = ""
+            dataNumberFail.push(dataFail)
             this.setState({ count: 0, statusModalFail: !this.state.statusModalFail })
             this.addNumber()
             this.props.addFail(dataNumberFail)
             console.log(dataNumberFail)
+        }
+    }
+    checkIndexNumber() {
+        if (this.state.number !== this.state.number) {
 
         }
     }
-    checkIndexNumber(){
-        if(this.state.number !== this.state.number){
 
-        }
-    }
-    
     addNumber() {
         this.getAnswer.value = ""
         console.log(this.state.number + 1)
@@ -220,7 +224,7 @@ class CardForm extends Component {
                     this.state.statusModalFail &&
                     <ModalFaild
                         closemodal={this.closeModal.bind(this)}
-                        answer={dataQust[this.state.number].answer}
+                        answer={dataQust[this.state.number - 1].answer}
                     />
                 }
 
