@@ -51,6 +51,8 @@ class App extends Component {
   senProfileFirebase() {
     const dbCon = firebase.database().ref('group/' + this.props.username.ground);
     dbCon.child('' + this.props.username.ground + '' + this.props.username.number).child('profile').set(this.props.username);
+    dbCon.child('' + this.props.username.ground + '' + this.props.username.number).child('suscess').set(dataNumberSuscess);
+    dbCon.child('' + this.props.username.ground + '' + this.props.username.number).child('fail').set(dataNumberFail);
   }
 
   addRegisSort() {

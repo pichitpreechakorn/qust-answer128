@@ -38,13 +38,13 @@ class CardForm extends Component {
     }
     checkAnswer() {
         if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2 || this.getAnswer.value === dataQust[this.state.number].answer3 || this.getAnswer.value === dataQust[this.state.number].answer4)) {
-            this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
+            this.setState({ statusModalSuccess: true, status_textarea: 1, number: this.props.number + 1 })
             this.checkEndQust()
-            dataNumberSuscess.push(this.state.number)
-            this.props.addSuscess(dataNumberSuscess)
+            this.pushDataSuccess()
+            this.addNumber()
+            // this.props.addSuscess(dataNumberSuscess)
             this.checkErrorSuscess()
             this.props.firebase()
-            console.log(dataNumberSuscess)
             console.log("ถูก")
         }
         else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
@@ -66,6 +66,7 @@ class CardForm extends Component {
             this.props.setPoint(this.props.score.point + 1)
             this.getAnswer.value = ""
             this.props.getScore(true)
+            console.log("checkErrorSuscess")
         }
     }
     checkEndQust() {
@@ -77,14 +78,9 @@ class CardForm extends Component {
         }
     }
     checkCountFail(answer) {
-        const dataFail = {
-            qust: dataQust[this.state.number].qust,
-            answer: this.getAnswer.value,
-            status: false
-        }
         if (this.state.count === 1) {
+            this.pushDataFail()
             this.getAnswer.value = ""
-            dataNumberFail.push(dataFail)
             this.setState({ count: 0, statusModalFail: !this.state.statusModalFail })
             this.addNumber()
             this.props.addFail(dataNumberFail)
@@ -96,7 +92,17 @@ class CardForm extends Component {
 
         }
     }
+    pushDataSuccess() {
+        const number = this.state.number + 1
+        const dataStr = "ข้อที่ :" + number + "\n ถาม :" + dataQust[number].qust + "\n ตอบ :" + this.getAnswer.value
+        dataNumberSuscess.push(dataStr)
+    }
+    pushDataFail() {
+        const number = this.state.number + 1
+        const dataStr = "ข้อที่ :" + number + "\n ถาม :" + dataQust[number].qust + "\n ตอบ :" + this.getAnswer.value
+        dataNumberFail.push(dataStr)
 
+    }
     addNumber() {
         this.getAnswer.value = ""
         console.log(this.state.number + 1)

@@ -25,6 +25,7 @@ class CardForm extends Component {
   componentWillMount() {
     this.randomNumber()
   }
+
   randomNumber() {
     const min = 0;
     // const max = 127;
@@ -48,22 +49,67 @@ class CardForm extends Component {
   }
   checkAnswer() {
     if ((this.getAnswer.value !== "" || null) && (this.getAnswer.value === dataQust[this.state.number].answer || this.getAnswer.value === dataQust[this.state.number].answer2 || this.getAnswer.value === dataQust[this.state.number].answer3 || this.getAnswer.value === dataQust[this.state.number].answer4)) {
-      this.setState({ statusModalSuccess: !this.state.statusModalSuccess, status_textarea: 1 })
-      this.getAnswer.value = ""
-      this.props.setPoint(this.props.score.point + 1)
-      this.props.getScore(true)
+      this.setState({ statusModalSuccess: true, status_textarea: 1 })
+      this.checkEndQust()
+      this.pushDataSuccess()
+      this.randomNumber()
+      setTimeout(() => {
+        this.setState({ statusModalSuccess: true })
+      })
+      // this.props.addSuscess(dataNumberSuscess)
+      this.checkErrorSuscess()
+      this.props.firebase()
       console.log("ถูก")
     }
     else if (this.getAnswer.value !== dataQust[this.state.number].answer) {
-      this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
-      this.getAnswer.value = ""
+      this.setState({ status_textarea: 0, count: this.state.count + 1 })
+
+      this.checkCountFail(this.getAnswer.value)
+      this.props.firebase()
       console.log("ผิด")
     }
     else if (this.getAnswer.value === "") {
-      this.setState({ statusModalFail: !this.state.statusModalFail, status_textarea: 0 })
-      this.getAnswer.value = ""
+      this.setState({ status_textarea: 0, count: this.state.count + 1 })
+      this.checkCountFail(this.getAnswer.value)
+      this.props.firebase()
       console.log("ผิด")
     }
+  }
+  checkEndQust() {
+    console.log(this.props.number)
+    if (this.props.number + 1 === 3) {
+      // if (this.props.number + 1 === 1) {
+      console.log("จบ")
+      this.setState({ modalEnd: true })
+    }
+  }
+  checkErrorSuscess() {
+    if (this.props.score.point !== (this.state.number + 1)) {
+      this.props.setPoint(this.props.score.point + 1)
+      this.getAnswer.value = ""
+      this.props.getScore(true)
+    }
+  }
+  checkCountFail(answer) {
+    if (this.state.count === 1) {
+      this.pushDataFail()
+      this.getAnswer.value = ""
+      this.setState({ count: 0, statusModalFail: !this.state.statusModalFail })
+      this.addNumber()
+      this.props.addFail(dataNumberFail)
+      console.log(dataNumberFail)
+    }
+  }
+  pushDataSuccess() {
+    const number = this.state.number + 1
+    const dataStr = "ข้อที่ :" + number + "\n ถาม :" + dataQust[number].qust + "\n ตอบ :" + this.getAnswer.value
+    dataNumberSuscess.push(dataStr)
+  }
+  pushDataFail() {
+    const number = this.state.number + 1
+    const dataStr = "ข้อที่ :" + number + "\n ถาม :" + dataQust[number].qust + "\n ตอบ :" + this.getAnswer.value
+    dataNumberFail.push(dataStr)
+
   }
   addNumber() {
     this.randomNumber()
